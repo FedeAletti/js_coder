@@ -1,20 +1,68 @@
-/* Selectores */
+/* ==================== Selectores ==================== */
 const carrito = document.querySelector("#carrito");
 const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const listaProductos = document.querySelector("#lista-productos");
+const carritoLogo = document.querySelector('#carrito-contenedor')
+const btnVaciarCarrito = document.querySelector('#vaciar-carrito');
+const comprarButton = document.querySelector('.comprarButton');
 
 let articulosCarrito = [];
 
-/* Listeners */
-listaProductos.addEventListener('click', agregarProducto);
-document.addEventListener('DOMContentLoaded', () => {
-    articulosCarrito = JSON.parse(localStorage.getItem('carrito'));
 
+/* ==================== Listeners ==================== */
+listaProductos.addEventListener('click', agregarProducto);
+carrito.addEventListener('click', quitarProducto)
+btnVaciarCarrito.addEventListener('click', vaciarCarrito);
+comprarButton.addEventListener('click', comprarButtonClicked);
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    // --formato de carrito con contenido
+    if(articulosCarrito.length >= 0){
+        carritoLogo.classList.add('carrito-lleno');
+    }
     insertarCarritoHTML();
 });
 
+/* ==================== Funciones ==================== */
 
-/* Funciones */
+// --Vaciado de carrito
+function vaciarCarrito() {
+	limpiarCarrito();
+	articulosCarrito = [];
+	guardarStorage();
+}
+// --Quita de producto
+function quitarProducto(e) {
+	if (e.target.classList.contains('borrar-producto')) {
+        e.preventDefault();
+		const productoId = e.target.getAttribute('data-id');
+
+		/* Filtro los productos del carrito */
+		articulosCarrito = articulosCarrito.filter(producto => producto.id != productoId);
+
+		insertarCarritoHTML();
+		guardarStorage();
+    }
+    
+}
+
+// --Boton Compra
+function comprarButtonClicked(e){
+    if (e.target.classList.contains('comprarButton')) {
+        vaciarCarrito();
+        const graciasCompra = document.createElement('div');
+        graciasCompra.innerHTML = `
+            <h3 class="text-center">Gracias por su compra!</h3>
+            `
+        contenedorCarrito.appendChild(graciasCompra);
+    }
+    
+}
+
+// --Agregar productos
 function agregarProducto(e) {
     e.preventDefault();
 
@@ -22,10 +70,13 @@ function agregarProducto(e) {
         const productoSeleccionado = e.target.parentElement.parentElement;
 
         obtenerDatos(productoSeleccionado);
-    }
+    } 
+
+    
 
 }
 
+// --Datos de productos
 function obtenerDatos(producto) {
     
     const productoAgregado = {
@@ -46,7 +97,7 @@ function obtenerDatos(producto) {
             }else {
                 return producto;
             };
-            articulosCarrito = [...productoAgregado];
+            articulosCarrito = [...productos];
         })
     } else{
         //Pushear al carrito
@@ -55,15 +106,18 @@ function obtenerDatos(producto) {
 
     insertarCarritoHTML();
     guardarStorage();
-};
+}
 
+// --Guardado en el local storage
 function guardarStorage() {
-    localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
-};
+	localStorage.setItem('carrito', JSON.stringify(articulosCarrito));
+}
 
 function insertarCarritoHTML(){
     //Borrar contenido del carrito para no repetirlo
     limpiarCarrito();
+    let total = 0;
+    const carritoTotal = document.querySelector('.cartTotal')
 
     articulosCarrito.forEach(producto => {
         const {imagen, nombre, precio, id, cantidad} = producto;
@@ -87,11 +141,28 @@ function insertarCarritoHTML(){
             </td>
         `
         contenedorCarrito.appendChild(row);
+
+        const precioProducto = precio.replace('$', '');
+        const cantidadProducto = cantidad;
+
+        total = total + precioProducto * cantidadProducto;
+
     });
+    
+
+    carritoTotal.innerHTML = `$${total.toFixed(2)}`;
 
 }
 
 
+// --Limpiar productos
+function limpiarProductos() {
+	while (listaProductos.firstChild) {
+		listaProductos.removeChild(listaProductos.firstChild);
+	}
+}
+
+// --Limpiar Carrito
 function limpiarCarrito(){
     while(contenedorCarrito.firstChild){
         contenedorCarrito.removeChild(contenedorCarrito.firstChild)

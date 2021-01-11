@@ -150,6 +150,10 @@ textarea {
     color: white;
     font-weight: bold;
 }
+.borrar-producto:hover{
+  text-decoration: none;
+  color: rgb(114, 24, 24);
+}
 
     /* PARALLAX */
   .parallax::before{
@@ -348,6 +352,7 @@ textarea {
   /* background-color: red; */
   border-radius: 40%;
   position: fixed;
+  z-index: 1;
   bottom: 2rem;
   right: 2rem;
   transition: all .5s ease;
