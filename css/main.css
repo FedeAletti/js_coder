@@ -357,8 +357,9 @@ textarea {
   right: 2rem;
   transition: all .5s ease;
 }
-.logo-carrito img{
-  max-width: 50%s;
+.logo-carrito i{
+  font-size: 3rem;
+  color: black;
 }
 .logo-carrito:hover{
   cursor: pointer;

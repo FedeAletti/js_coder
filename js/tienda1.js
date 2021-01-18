@@ -1,24 +1,31 @@
 /* ==================== Selectores ==================== */
-const carrito = document.querySelector("#carrito");
+const carrito = $("#carrito");
+
 const contenedorCarrito = document.querySelector("#lista-carrito tbody");
 const listaProductos = document.querySelector("#lista-productos");
 const carritoLogo = document.querySelector('#carrito-contenedor')
-const btnVaciarCarrito = document.querySelector('#vaciar-carrito');
-const comprarButton = document.querySelector('.comprarButton');
+
+const btnVaciarCarrito = $('#vaciar-carrito');
+
+const comprarButton = $('.comprarButton');
 
 let articulosCarrito = [];
 
 
 /* ==================== Listeners ==================== */
 listaProductos.addEventListener('click', agregarProducto);
-carrito.addEventListener('click', quitarProducto)
-btnVaciarCarrito.addEventListener('click', vaciarCarrito);
-comprarButton.addEventListener('click', comprarButtonClicked);
 
+$(comprarButton).click(comprarButtonClicked);
+
+$(carrito).click(quitarProducto);
+$(btnVaciarCarrito).click(vaciarCarrito);
 
 
 document.addEventListener('DOMContentLoaded', () => {
     articulosCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+
+    
     // --formato de carrito con contenido
     if(articulosCarrito.length >= 0){
         carritoLogo.classList.add('carrito-lleno');
@@ -29,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 /* ==================== Funciones ==================== */
 
 // --Vaciado de carrito
-function vaciarCarrito() {
+function vaciarCarrito(e) {
 	limpiarCarrito();
 	articulosCarrito = [];
 	guardarStorage();
@@ -51,6 +58,7 @@ function quitarProducto(e) {
 
 // --Boton Compra
 function comprarButtonClicked(e){
+    
     if (e.target.classList.contains('comprarButton')) {
         vaciarCarrito();
         const graciasCompra = document.createElement('div');
@@ -58,6 +66,8 @@ function comprarButtonClicked(e){
             <h3 class="text-center">Gracias por su compra!</h3>
             `
         contenedorCarrito.appendChild(graciasCompra);
+
+        total = 0
     }
     
 }
