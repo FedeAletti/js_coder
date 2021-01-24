@@ -152,7 +152,7 @@ $(document).ready(function () {
             
             console.log(`El cliente se llama ${datosCliente.nombre + ' ' + datosCliente.apellido},su teléfono es ${datosCliente.telefono}. Posee una bicicleta de tipo ${biciCliente.modelo} de la marca ${biciCliente.marca} que cuesta alrededor de $${biciCliente.precio}. Ha escogido el ${planElegido.nombre} de un valor de ${planElegido.precio}.`)
 
-            $('#finCotizacion').attr('href', `https://api.whatsapp.com/send?phone=543424388638&text=Hola!%20Soy%20${datosCliente.nombre}.%20Poseo%20una%20bicicleta%20de%20tipo%20${biciCliente.modelo}%20de%20la%20marca%20${biciCliente.marca}%20valuada%20alrededor%20de%20los%20AR%24${biciCliente.precio}.%20He%20escogido%20el%20${planElegido.nombre}%20de%20un%20valor%20de%20${planElegido.precio}.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n`)
+            $('#finCotizacion').attr('href', `https://api.whatsapp.com/send?phone=543424388638&text=Hola!%20Soy%20${datosCliente.nombre + ' ' + datosCliente.apellido}.%20Poseo%20una%20bicicleta%20de%20tipo%20${biciCliente.modelo}%20de%20la%20marca%20${biciCliente.marca}%20valuada%20alrededor%20de%20los%20AR%24${biciCliente.precio}.%20He%20escogido%20el%20${planElegido.nombre}%20de%20un%20valor%20de%20${planElegido.precio}.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n`)
 
             return
         });
