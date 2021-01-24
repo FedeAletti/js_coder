@@ -447,7 +447,7 @@ textarea {
   height: 150px;
   width: 100%;
   background-image: url(../img/712.jpg);
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
   background-position: center;
   background-size: 130%;
 }
