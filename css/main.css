@@ -217,7 +217,7 @@ textarea {
     list-style: none;
   }
   .checklist li{
-    padding: 1.5rem 0;
+    padding: .4rem .5rem .04rem .05rem;
   }
   .checklist li i{
     color: rgb(15, 148, 15);
@@ -368,6 +368,106 @@ textarea {
 .carrito-lleno{
   background-color: aqua;
   padding: 1rem;
+}
+
+
+  /* ==================== COTIZADOR ==================== */
+
+#cotizador {
+  background-image: url(../img/bg-cotizador.jpg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.card-testimonial{
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.card-testimonial img{
+  float: left;
+  /* top: 20px; */
+  margin-top: 50px;
+  border-radius: 50%;
+  max-height: 90px;
+  max-width: 90px;
+}
+.card-testimonial h4{
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+.card-testimonial h6{
+  opacity: .7;
+}
+.card-testimonial p{
+  margin: 1rem 0 0 0;
+}
+.card-testimonial{
+  margin-top: -3.5px;
+  margin-bottom: 12.5px;
+}
+.card-testimonial li{
+    list-style: none;
+    display: block;
+
+}
+
+
+.info-bici {
+  display: flex !important;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.info-personal {
+  display: flex !important;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+#panel {
+  background-color: #fafafa;
+  display: none;
+}
+#panel2 {
+    display: none;
+}
+#panel3 {
+    display: none;
+}
+
+.form-cotizador-container{
+  background-color: white;
+  padding: 20px 0;
+}
+
+.bg-cotizando{
+  height: 150px;
+  width: 100%;
+  background-image: url(../img/712.jpg);
+  /* background-attachment: fixed; */
+  background-position: center;
+  background-size: 130%;
+}
+.btn-formulario{
+  background-color: #4ae0b4;
+  border-color: #4ae0b4;
+  text-transform: uppercase;
+  color: white;
+}
+.btn-formulario:hover{
+  background-color: #43c09b;
+  border-color: #43c09b;
+  color: white;
+
+}
+
+.prestaciones{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 

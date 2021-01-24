@@ -44,86 +44,185 @@
         </div>
         
     </section>
-    <!-- Section 1 -->
 
-    <section id="cotizador" class="cotizador shadow">
-        <div class="container">
-            <div class="row ">
-                <div class="col">
-                    <h2>Asegurá tu bici</h2>
-                    <p>Asegura tu bicicleta con nuestros seguros y pase lo que pase seguí tu camino y nosotros te cuidamos.</p>
-                    <!-- <a href="#servicios" class="btn btn-success especial">saber más</a></li> -->
-                
-                    <!-- Info bici -->
-                    <div class="form-seguro mt-5">
-                        <div class="info-personal">
-                            <input type="text" value="" placeholder="Nombre" class="mt-1 text-center">
-                            <input type="text" placeholder="Apellido" value="" class="mt-1 text-center">
-                            <input type="number" placeholder="Telefono" value="" class="mt-1 text-center">
-                        </div>
-                        <div class="info-bici">
-                            <input type="text" value="" placeholder="">
+        <!-- Section 1 -->
+
+        <section id="cotizador" class="cotizador shadow" >
+            <div class="container" >
+                <div class="row " >
+                    <div class="col">
+                        <h2>Asegurá tu bici</h2>
+                        <p>Asegura tu bicicleta con nuestros seguros y pase lo que pase seguí tu camino y nosotros te cuidamos.</p>
+
+                        <div class="container">
+                                <!--     
+                                <button id="btnCotizar" class="btn btn-block btn-success mt-3" data-toggle="modal" data-target="#exampleModal3">Cotiza</button>
+        
+                                <button class="btn btn-primary btn-block" id="stop">Stop sliding</button> -->
+    
+                                <div id="flip" class="mt-4 btn btn-block btn-success mt-3">Cotiza</div>
+
                         </div>
 
                     </div>
+                    <div class="col">
+                        <h3>Testimoniales</h3>
+                        <div class="card-testimonial shadow container">
 
-                </div>
-                <div class="col">
-                    <h3>Te cubrimos</h3>
-                    <ul class="checklist">
-                        <li><i class="fas fa-check-double"></i> Robo</li>
-                        <li><i class="fas fa-check-double"></i> Destrucción e Incendio</li>
-                        <li><i class="fas fa-check-double"></i> Transporte en caso de accidente</li>
-                        <li><i class="fas fa-check"></i> Servicio Técnico</li>
-                        <li><i class="fas fa-check"></i> Cambio de componentes por avería</li>
-                    </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
     
-    <!-- Section 2 -->
-    <section class="servicios" id="servicios">
-        <div class="card-servicio shadow container">
-            <div class="row">
-                <div class="col-3"><img src="img/bici-piso.jpg" alt=""></div>
-                <div class="col-9 card-servicio-info">
-                    <h3>Encontrá los accesorios que necesitas</h3>
-                    <p>En nuestra tienda encontrá los accesorios para hacer tus viajes de forma más segura.</p>
-                    <a href="tienda.html" class="btn btn-success btn-servicio">visitar tienda</a></li>
-                    
-                </div>
+            <div id="contenedorInfoBici">
+                
             </div>
-        </div>
-    </section>
-    
-    
-    <footer class="site-footer">
-        <div class="container">
+        </section>
+
+        <div>
+                
+            <!-- ==================================== Form Cotizador ====================================-->
+            <div id="panel" class="pt-2">
+                <div class="container form-cotizador-container shadow mt-5 mb-5">
+
+                    <div class="bg-cotizando parallax"></div>
+                    <div class="text-center container w-50" id="modalCotizador">
+                        <div class="info-bici">
+                            <h1>Sobre tu bici</h1>
+                            <form  >    
+                                <label for="biciTipo">¿Qué modelo de bicicleta tenés?</label><br>
+                                <select name="biciTipo" class="d-block w-100 text-center" id="biciTipo">
+                                    <option value="slp">SLP</option>
+                                    <option value="fixie">Fixie</option>
+                                    <option value="ruta">Ruta</option>
+                                    <option value="hol">Holandesa</option>
+                                </select>
             
-                <nav >
-                    <ul class="social-media">
-                        <li><i class="fab fa-facebook-f"></i></li>
-                        <li><i class="fab fa-twitter"></i></li>
-                        <li><i class="fab fa-instagram"></i></li>
-                        <li><i class="fab fa-whatsapp"></i></li>
-                    </ul>
-                </nav>
-                <hr>
-                <h3>Seguinos en las redes para +info y consultas</h3>
+                                <label for="biciMarca" class="mt-2">¿Qué Marca es?</label>
+                                <select name="biciMarca" class="d-block w-100 text-center" id="biciMarca">
+                                    <option value="venzo">Venzo</option>
+                                    <option value="philco">Philco</option>
+                                    <option value="raleight">Raleight</option>
+                                    <option value="topm">Topmega</option>
+                                    <option value="vairo">Vairo</option>
+                                    <option value="fireb">Fire Bird</option>
+                                    <option value="slp">SLP</option>
+                                    <option value="spx">SPX</option>
+                                    <option value="olmo">Olmo</option>
+                                    <option value="gt">GT</option>
+                                    <option value="taller">De Taller</option>
+                                    <option value="otra">Otra Marca</option>
+                                </select>
             
-        </div>
+                                <label for="bicPrecio" class="mt-2">¿Cuál es su Precio Aproximado?</label>
+                                <input type="number" min="10000" placeholder="$10.000" class="text-center" id="biciPrecio">
+
+                                <label for="biciAño" class="mt-2">¿En qué año la compraste?</label>
+                                <select name="biciAño" id="biciAño">
+                                    <option value=""></option>
+                                </select>
+            
+            
+                                <button class="btn btn-formulario btn-block mt-4" type="submit" id="continue1">Continuar</button>
+                            </form>
+                        </div>
+            
+                    </div>
+                    <!-- ===== FIN PRIMER FORM ===== -->
+
+                    <div id="panel2" >        
+                        <div class="info-personal w-50 container " id="modalCotizador2">
+                            <h1>Contanos sobre vos!</h1>
+                            <form  >
+                                <input type="text" value="" placeholder="Nombre" class="nombre d-block w-100 text-center" required>
+                                <input type="text" placeholder="Apellido" value="" class="apellido d-block w-100 mt-1 text-center" required>
+                                <input type="number" placeholder="Telefono" value="" class="telefono mt-2  d-block w-100 text-center" min="0" required>
+                                <input type="email" placeholder="Correo" value="" class="mt-1  d-block w-100 text-center correo" required>
+    
+                                <button class="btn btn-formulario btn-block mt-4" type="submit" id="continue2">Continuar</button>
+                            </form>
+                        </div>
+                    </div> <!-- ===== FIN SEGUNDO FORM ===== -->
+
+                    <div id="panel3">
+                        <div class="row mt-2" id="modalCotizador3">
+                            <div class="col-md-6 container text-center">
+                                <h3>Seleccioná tu plan</h3>
+                                <div class="container">
+                                    <div class="card plan1" id="planes">
+                                        <div class="card-body">
+                                            <h4 class="card-title display-4 plan-nombre">Plan Básico</h4>
+                                            <hr>
+                                            <h1 class="card-text font-weight-bold text-success display-2 plan-precio">$250</h1>
+                                        </div>
+                                    </div>
+
+                                    <button class="btn btn-formulario btn-block mt-4" type="submit" id="planNext">Siguiente plan</button>
+
+                                </div>
+                                
+
+                            </div>
+                            <div class="col-md-6 prestaciones">
+                                <h3>Te cubrimos</h3>
+                                <ul class="checklist" id="prestaciones">
+                                    <li class="item-li-1"><i class="fas fa-check-double"></i> Robo</li>
+                                    <li class="item-li-2"><i class="fas fa-check-double"></i> Destrucción e Incendio</li>
+                                    <li class="item-li-3"><i class="fas fa-check-double"></i> Transporte en caso de accidente</li>
+                                </ul>
+
+                                <div class="text-right container">
+                                    <button class="btn btn-success" id="finCotizacion">Finalizar Cotización</button>
+                                </div>
+                            </div> <!-- ===== FIN TERCER FORM ===== -->
+                            
+                        </div>
+                    </div>
+                </div>
+
         
-    </footer>
+            </div>                                
+            <!-- ==================================== Fin Form Cotizador ====================================-->
+        </div>
 
-<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 
-  <script src="js/main.js"></script>
 
-  <!-- Fontawesome -->
-  <script src="https://kit.fontawesome.com/a49ef97e99.js" crossorigin="anonymous"></script> 
+
+        <footer class="site-footer">
+            <div class="container">
+                
+                    <nav >
+                        <ul class="social-media">
+                            <li><i class="fab fa-facebook-f"></i></li>
+                            <li><i class="fab fa-twitter"></i></li>
+                            <li><i class="fab fa-instagram"></i></li>
+                            <li><i class="fab fa-whatsapp"></i></li>
+                        </ul>
+                    </nav>
+                    <hr>
+                    <h3>Seguinos en las redes para +info y consultas</h3>
+                
+            </div>
+            
+        </footer>
+    
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script
+        src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+        crossorigin="anonymous">
+    </script>
+    <script 
+        src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" 
+        crossorigin="anonymous">
+    </script>
+
+<script src="js/cotizador.js"></script>
+
+<!-- Fontawesome -->
+<script src="https://kit.fontawesome.com/a49ef97e99.js" crossorigin="anonymous"></script> 
 
 </body>
 
