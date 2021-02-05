@@ -81,9 +81,6 @@ function agregarProducto(e) {
 
         obtenerDatos(productoSeleccionado);
     } 
-
-    
-
 }
 
 // --Datos de productos
